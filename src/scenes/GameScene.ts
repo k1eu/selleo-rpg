@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import { Player } from '../entities/Player';
 import { BART_CONFIG, BART_JUMP_CONFIG, KIEU_CONFIG, WORLD_WIDTH, WORLD_HEIGHT, CAMERA_LERP } from '../config';
 
@@ -11,17 +10,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   create(): void {
-    // Grass ground
-    this.add.tileSprite(
-      WORLD_WIDTH / 2,
-      WORLD_HEIGHT / 2,
-      WORLD_WIDTH,
-      WORLD_HEIGHT,
-      'grass'
-    );
-
-    // Scatter some darker grass patches as decoration
-    this.addGrassDecorations();
+    // Map background
+    const map = this.add.image(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, 'map');
+    map.setDisplaySize(WORLD_WIDTH, WORLD_HEIGHT);
+    map.setDepth(-1);
 
     // World bounds
     this.physics.world.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
@@ -46,26 +38,5 @@ export class GameScene extends Phaser.Scene {
     // Y-sort depth: higher Y = rendered in front
     this.player.sprite.setDepth(this.player.sprite.y);
     this.npc.sprite.setDepth(this.npc.sprite.y);
-  }
-
-  private addGrassDecorations(): void {
-    const graphics = this.add.graphics();
-
-    for (let i = 0; i < 200; i++) {
-      const x = Math.random() * WORLD_WIDTH;
-      const y = Math.random() * WORLD_HEIGHT;
-      const shade = Phaser.Math.Between(30, 60);
-
-      graphics.fillStyle(Phaser.Display.Color.GetColor(shade, 100 + Phaser.Math.Between(0, 40), shade), 0.6);
-
-      // Small grass blade clusters
-      for (let j = 0; j < 3; j++) {
-        const bx = x + Phaser.Math.Between(-4, 4);
-        const by = y + Phaser.Math.Between(-4, 4);
-        graphics.fillRect(bx, by, 2, Phaser.Math.Between(4, 8));
-      }
-    }
-
-    graphics.setDepth(-1);
   }
 }

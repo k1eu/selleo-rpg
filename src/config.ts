@@ -1,5 +1,5 @@
-export const WORLD_WIDTH = 3200;
-export const WORLD_HEIGHT = 3200;
+export const WORLD_WIDTH = 3840;
+export const WORLD_HEIGHT = 2880;
 export const TILE_SIZE = 64;
 export const PLAYER_SPEED = 160;
 export const SPRITE_SCALE = 0.5;

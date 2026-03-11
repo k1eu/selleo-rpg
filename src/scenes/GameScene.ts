@@ -26,6 +26,10 @@ export class GameScene extends Phaser.Scene {
     this.player.sprite.setCollideWorldBounds(true);
 
     this.npc = new Player(this, centerX + 200, centerY - 100, KIEU_CONFIG, false);
+    this.npc.sprite.setImmovable(true);
+
+    // Collision between player and NPC
+    this.physics.add.collider(this.player.sprite, this.npc.sprite);
 
     // Camera setup
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);

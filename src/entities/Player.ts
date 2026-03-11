@@ -3,6 +3,7 @@ import { type CharacterConfig, type JumpConfig, SPRITE_SCALE, PLAYER_SPEED, JUMP
 
 export class Player {
   public sprite: Phaser.Physics.Arcade.Sprite;
+  public frozen = false;
   private config: CharacterConfig;
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasd!: { W: Phaser.Input.Keyboard.Key; A: Phaser.Input.Keyboard.Key; S: Phaser.Input.Keyboard.Key; D: Phaser.Input.Keyboard.Key };
@@ -154,6 +155,14 @@ export class Player {
     if (!this.isControllable) return;
 
     const body = this.sprite.body as Phaser.Physics.Arcade.Body;
+
+    if (this.frozen) {
+      body.setVelocity(0, 0);
+      this.sprite.anims.stop();
+      this.sprite.setFrame(this.config.idleFrame);
+      return;
+    }
+
     let vx = 0;
     let vy = 0;
 

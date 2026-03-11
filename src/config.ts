@@ -53,6 +53,17 @@ export const BART_JUMP_CONFIG: JumpConfig = {
   end: 4,
 };
 
+// Dialog system
+export const DIALOG_FONT_SIZE = 20;
+export const DIALOG_PADDING = 20;
+export const DIALOG_TYPEWRITER_SPEED = 30; // ms per character
+export const DIALOG_BOX_COLOR = 0x000000;
+export const DIALOG_BOX_ALPHA = 0.85;
+export const DIALOG_BOX_HEIGHT_RATIO = 0.2; // 20% of screen height
+export const DIALOG_INTERACTION_DISTANCE = 150;
+export const DIALOG_NAME_FONT_SIZE = 22;
+export const DIALOG_PORTRAIT_HEIGHT_RATIO = 0.5; // show top 50% of chibi image
+
 export const KIEU_CONFIG: CharacterConfig = {
   key: 'kieu',
   path: 'assets/sprites/kieu_sprites.png',

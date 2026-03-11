@@ -14,6 +14,8 @@ export class BootScene extends Phaser.Scene {
       frameHeight: BART_JUMP_CONFIG.frameHeight,
     });
     this.load.image('map', 'assets/map.jpg');
+    this.load.image('chibi-bart', 'assets/chibi-bart.png');
+    this.load.image('chibi-kieu', 'assets/chibi-kieu.png');
   }
 
   create(): void {
